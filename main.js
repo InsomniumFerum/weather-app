@@ -1,37 +1,42 @@
 "use strict";
 
-const searchBox = document.querySelector(".search-box");
-const temp = document.querySelector(".temp");
-const cityName = document.querySelector(".city");
-const time = document.querySelector(".time");
-
-let apiKey = "008cba7955ad4790904143aa5e273e3d";
-let lat;
-let lon;
-
-const getWeather = (e) => {
-  console.log(e);
+const api = {
+  key: "ca79a7143141d606e78f41fdbee76604",
+  base: "https://api.openweathermap.org/data/2.5/",
 };
 
-const getAJAX = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position) => {
-      lat = position.coords.latitude;
-      lon = position.coords.longitude;
+const search = document.querySelector(".search");
+const btn = document.querySelector(".btn");
 
-      const api = `http://api.weatherbit.io/v2.0/current?lat=${lat}&lon=-${lon}&key=${apiKey}&include=minutely`;
-      fetch(api)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          const { city_name, timezone, temp, sunrise, ob_time } = data.data[0];
-          
-          temp.textContent = Math.floor(temp) + "C";
-          cityName.textContent = city_name;
-          time.textContent = ob_time;
-        });
-    });
+const getInput = (e) => {
+  e.preventDefault();
+  if (e.type == "click") {
+    getData(search.value);
+    console.log(search.value);
   }
 };
-getAJAX();
-searchBox.addEventListener("keypress", getWeather);
+btn.addEventListener("click", getInput);
+
+const getData = () => {
+  fetch(
+    `${api.base}weather?q=${search.value}&units=metric&appid=${api.key}&lang=${tr}`
+  )
+    .then((res) => res.json())
+    .then(displayData);
+  console.log(res);
+};
+
+const displayData = (res) => {
+  if (res.cod === "404") {
+    const error = document.querySelector(".error");
+    error.textContent = "Please enter a valid city";
+    search.value = "";
+  } else {
+    const city = document.querySelector(".city");
+    city.innerText = `${res.name}, ${res.sys.country}`;
+
+    const today = new Date();
+    const date = document.querySelector(".date");
+    date.innerText = dateFunction(today);
+  }
+};
