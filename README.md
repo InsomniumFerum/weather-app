@@ -19,7 +19,7 @@
 ## About The Project
 Daily forecast app. Type the city name to see on display daily forecast information.
 
-[Project-Link](https://frosty-franklin-my-wallet.netlify.app/)
+[Project-Link](https://daiy-forecast-app.netlify.app/)
 
 <img src="images/project.png" width="1000">
 
