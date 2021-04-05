@@ -11,19 +11,16 @@ const btn = document.querySelector(".btn");
 const getInput = (e) => {
   e.preventDefault();
   if (e.type == "click") {
+    console.log(e.type);
     getData(search.value);
-    console.log(search.value);
   }
 };
 btn.addEventListener("click", getInput);
 
 const getData = () => {
-  fetch(
-    `${api.base}weather?q=${search.value}&units=metric&appid=${api.key}&lang=${tr}`
-  )
+  fetch(`${api.base}weather?q=${search.value}&units=metric&appid=${api.key}`)
     .then((res) => res.json())
     .then(displayData);
-  console.log(res);
 };
 
 const displayData = (res) => {
@@ -38,5 +35,46 @@ const displayData = (res) => {
     const today = new Date();
     const date = document.querySelector(".date");
     date.innerText = dateFunction(today);
+
+    const temp = document.querySelector(".temp");
+    temp.innerHTML = `Temp: ${Math.round(res.main.temp)} <span>°C</span>`;
+
+    const weather = document.querySelector(".weather");
+    weather.innerText = `Weather: ${res.weather[0].main}`;
+
+    search.value = "";
   }
+};
+
+const dateFunction = (d) => {
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let day = days[d.getDay()];
+  let date = d.getDate();
+  let month = months[d.getMonth()];
+  let year = d.getFullYear();
+
+  return `${day}, ${date} ${month} ${year}`;
 };
