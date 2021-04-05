@@ -8,18 +8,32 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="app-wrap">
-      <header>
-        <input type="text" autocomplete="off" class="search-box" />
-      </header>
-      <main>
-        <section class="location">
-           <div class="temp">32</div>
-          <div class="city">Sakarya</div>
-          <div class="time">Thursday 10 January 2021</div>
-        </section>
-       
-      </main>
+    <div class="main-container">
+       <div class="container top">
+          <h1>Weather App</h1>
+          <form action="" onsubmit="return false">
+             <input type="text" class="search" placeholder="Search by city name">
+             <button type="submit" class="btn">Submit</button>
+             <p class="error"></p>
+          </form>
+          <section>
+             <div class="container top">
+                <div class="icon">
+                   <img src="" alt="" class="weather-icon">
+                </div>
+                <div class="location">
+                   <div class="city">New York, US</div>
+                   <div class="date">Thursday, Nov 26 2020</div>
+                </div>
+                <div class="current">
+                   <div class="temp">Temp: 25 <span>°C</span></div>
+                   <div class="weather">Weather: Sunny</div>
+                   <div class="temp-range">Temp Range: 10°C / 15°C</div>
+                </div>
+             </div>
+          </section>
+       </div>
+    </div>
     </div>
     <script src="./main.js"></script>
   </body>
