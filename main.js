@@ -42,6 +42,15 @@ const displayData = (res) => {
     const weather = document.querySelector(".weather");
     weather.innerText = `Weather: ${res.weather[0].main}`;
 
+    const tempRange = document.querySelector(".temp-range");
+    tempRange.innerText = `Temp Range: ${Math.round(
+      res.main.temp_min
+    )}°C / ${Math.round(res.main.temp_max)}°C`;
+
+    const weatherIcon = document.querySelector(".weather-icon");
+    const iconURL = "http://openweathermap.org/img/w/";
+    weatherIcon.src = iconURL + res.weather[0].icon + ".png";
+
     search.value = "";
   }
 };
