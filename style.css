@@ -15,7 +15,8 @@ body {
 }
 
 .container {
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .main-container {
@@ -25,13 +26,14 @@ body {
   flex-direction: column;
   width: 100%;
   max-width: 320px;
-  height: 80vh;
+  height: 65vh;
   background: url(./images/rowan-heuvel-RI_frMXeYf4-unsplash.jpg) no-repeat
     center;
   background-size: cover;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
   position: relative;
+  box-shadow: 0 8px 6px -6px black;
 }
 
 .main-container::before {
@@ -68,8 +70,8 @@ body {
 
 .top input {
   background-color: rgba(0, 0, 0, 0.5);
-  border-bottom: solid 2px green;
-  border-radius: 10px 0 10px 0;
+  border-bottom: solid 4px #2c2c54;
+  border-radius: 15px 0 15px 0;
   text-align: center;
   font-size: 14px;
   color: white;
