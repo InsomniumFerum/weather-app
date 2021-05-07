@@ -19,9 +19,9 @@
 ## About The Project
 Daily forecast app. Type the city name to see on display daily forecast information.
 
-[Project-Link](https://daiy-forecast-app.netlify.app/)
+[Project-Demo](https://daiy-forecast-app.netlify.app/)
 
-<img src="images/project.png" width="1000">
+<img src="images/project.png" width="600">
 
 #### JavaScript Used
 
